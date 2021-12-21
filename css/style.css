@@ -1,0 +1,71 @@
+.gallery {
+    width: 80%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 2vh;
+    grid-auto-flow: dense;
+    /*чтобы заполниось свободное пространство, если оно имеется*/
+}
+
+.gallery .image {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    /*в будущем чтобы ничего не сместили эти блоки*/
+}
+
+.gallery .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: brightness(0.5) grayscale(1);
+    transition: 0.3s ease-in-out;
+}
+
+.gallery .image img:hover {
+    filter: brightness(1) grayscale(0);
+    transform: scale(1.1);
+}
+
+.image:first-child {
+    grid-column-start: span 2;
+    grid-row-start: span 2;
+}
+
+.image:nth-child(2n+1) {
+    grid-row-start: span 2;
+}
+
+.image:nth-child(4n+6) {
+    grid-column-start: span 2;
+    grid-row-start: span 2;
+}
+
+@media only screen and (min-width:480px) and (max-width:768px) {
+    .gallery {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (min-width:320px) and (max-width:480px) {
+    .gallery {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width:320px) {
+    .gallery {
+        display: block;
+        max-width: 240px;
+    }
+
+    .gallery .image {
+        display: block;
+        margin: 2% 0;
+    }
+}
